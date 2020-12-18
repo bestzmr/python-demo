@@ -384,3 +384,213 @@ else:
 
 ## 高级特性
 
+### 切片
+
+```python
+>>> L = ['Michael', 'Sarah', 'Tracy', 'Bob', 'Jack']
+>>> L[0:3]
+['Michael', 'Sarah', 'Tracy']
+```
+
+`L[0:3]`表示，从索引`0`开始取，直到索引`3`为止，但不包括索引`3`。即索引`0`，`1`，`2`，正好是3个元素。
+
+如果第一个索引是`0`，还可以省略：
+
+```python
+>>> L[:3]
+['Michael', 'Sarah', 'Tracy']
+```
+
+也可以从索引1开始，取出2个元素出来：
+
+```python
+>>> L[1:3]
+['Sarah', 'Tracy']
+```
+
+类似的，既然Python支持`L[-1]`取倒数第一个元素，那么它同样支持倒数切片，试试：
+
+```python
+>>> L[-2:]
+['Bob', 'Jack']
+>>> L[-2:-1]
+['Bob']
+```
+
+记住倒数第一个元素的索引是`-1`。
+
+**总结：**
+
+* 切片可以操作list、tuple、字符串
+* [param1:param2:param3]，param1索引起始位置，param2索引结束位置（不包括该索引位置），param3表示间隔
+* 切片支持从类似[-1]的操作
+
+
+
+### 迭代
+
+Python的`for`循环不仅可以用在list或tuple上，还可以作用在其他可迭代对象上
+
+ist这种数据类型虽然有下标，但很多其他数据类型是没有下标的，但是，只要是可迭代对象，无论有无下标，都可以迭代，比如dict就可以迭代：
+
+```python
+>>> d = {'a': 1, 'b': 2, 'c': 3}
+>>> for key in d:
+...     print(key)
+...
+a
+c
+b
+```
+
+默认情况下，dict迭代的是key。如果要迭代value，可以用`for value in d.values()`，如果要同时迭代key和value，可以用`for k, v in d.items()`。
+
+所以，当我们使用`for`循环时，只要作用于一个可迭代对象，`for`循环就可以正常运行，而我们不太关心该对象究竟是list还是其他数据类型。
+
+那么，如何判断一个对象是可迭代对象呢？方法是通过collections模块的Iterable类型判断：
+
+```python
+>>> from collections import Iterable
+>>> isinstance('abc', Iterable) # str是否可迭代
+True
+>>> isinstance([1,2,3], Iterable) # list是否可迭代
+True
+>>> isinstance(123, Iterable) # 整数是否可迭代
+False
+```
+
+最后一个小问题，如果要对list实现类似Java那样的下标循环怎么办？Python内置的`enumerate`函数可以把一个list变成索引-元素对，这样就可以在`for`循环中同时迭代索引和元素本身：
+
+```python
+>>> for i, value in enumerate(['A', 'B', 'C']):
+...     print(i, value)
+...
+0 A
+1 B
+2 C
+```
+
+**总结：**
+
+* 迭代作用于所有是可迭代的对象
+
+### 列表生成式
+
+```python
+>>> [x * x for x in range(1, 11)]
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+写列表生成式时，把要生成的元素`x * x`放到前面，后面跟`for`循环，就可以把list创建出来
+
+for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方：
+
+```python
+>>> [x * x for x in range(1, 11) if x % 2 == 0]
+[4, 16, 36, 64, 100]
+```
+
+**总结：**
+
+* 列表生成式中的for循环后面只能有if不能有else，这里的if是起过滤、筛选的作用
+* 列表生成式中的for循环前面存在if时必须存在else，这是因为`for`前面的部分是一个表达式，它必须根据`x`计算出一个结果。
+
+### 生成器
+
+要创建一个generator，有很多种方法。第一种方法很简单，只要把一个列表生成式的`[]`改成`()`，就创建了一个generator：
+
+```python
+>>> L = [x * x for x in range(10)]
+>>> L
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> g = (x * x for x in range(10))
+>>> g
+<generator object <genexpr> at 0x1022ef630>
+```
+
+创建`L`和`g`的区别仅在于最外层的`[]`和`()`，`L`是一个list，而`g`是一个generator。
+
+generator保存的是算法，每次调用`next(g)`，就计算出`g`的下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出`StopIteration`的错误。
+
+当然，上面这种不断调用`next(g)`实在是太变态了，正确的方法是使用`for`循环，因为generator也是可迭代对象：
+
+```python
+>>> g = (x * x for x in range(10))
+>>> for n in g:
+...     print(n)
+... 
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+```
+
+```python
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        yield b
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+```
+
+定义generator的另一种方法。如果一个函数定义中包含`yield`关键字，那么这个函数就不再是一个普通函数，而是一个generator：
+
+```python
+>>> f = fib(6)
+>>> f
+<generator object fib at 0x104feaaa0>
+```
+
+generator和函数的执行流程不一样。函数是顺序执行，遇到`return`语句或者最后一行函数语句就返回。而变成generator的函数，在每次调用`next()`的时候执行，遇到`yield`语句返回，再次执行时从上次返回的`yield`语句处继续执行。
+
+### 迭代器
+
+凡是可作用于`for`循环的对象都是`Iterable`类型；
+
+凡是可作用于`next()`函数的对象都是`Iterator`类型，它们表示一个惰性计算的序列；
+
+集合数据类型如`list`、`dict`、`str`等是`Iterable`但不是`Iterator`，不过可以通过`iter()`函数获得一个`Iterator`对象。
+
+Python的`for`循环本质上就是通过不断调用`next()`函数实现的，例如：
+
+```python
+for x in [1, 2, 3, 4, 5]:
+    pass
+```
+
+实际上完全等价于：
+
+```python
+# 首先获得Iterator对象:
+it = iter([1, 2, 3, 4, 5])
+# 循环:
+while True:
+    try:
+        # 获得下一个值:
+        x = next(it)
+    except StopIteration:
+        # 遇到StopIteration就退出循环
+        break
+```
+
+## python中常用的函数：
+
+range()可以生成一个整数序列，e.g. range(5)生成的序列是**从0开始小于5的整数，range函数生成的数的范围是左闭右开**
+
+str.strip()去除首尾空格
+
+isinstance(object1,type2)判断类型
+
+max()求最大值
+
+enumerate()参数是个list，把一个list变成索引-元素对
+
+iter()函数可以获得一个`Iterator`对象
