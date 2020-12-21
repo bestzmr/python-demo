@@ -994,7 +994,7 @@ map()
 reduce()
 
 filter()
-
+:s
 sorted()
 
 functools.partial(int, base=2)
