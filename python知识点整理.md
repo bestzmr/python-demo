@@ -581,9 +581,403 @@ while True:
         break
 ```
 
+## 函数式编程
+
+### 高阶函数
+
+#### map
+
+`map()`函数接收两个参数，一个是函数，一个是`Iterable`，`map`将传入的函数依次作用到序列的每个元素，并把结果作为新的`Iterator`返回。
+
+比如我们有一个函数f(x)=x2，要把这个函数作用在一个list `[1, 2, 3, 4, 5, 6, 7, 8, 9]`上，就可以用`map()`实现如下：
+
+```python
+>>> def f(x):
+...     return x * x
+...
+>>> r = map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+>>> list(r)
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+```
+
+
+
+再看`reduce`的用法。`reduce`把一个函数作用在一个序列`[x1, x2, x3, ...]`上，这个函数必须接收两个参数，`reduce`把结果继续和序列的下一个元素做累积计算，其效果就是：
+
+```python
+reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)
+```
+
+比方说对一个序列求和，就可以用`reduce`实现：
+
+```python
+>>> from functools import reduce
+>>> def add(x, y):
+...     return x + y
+...
+>>> reduce(add, [1, 3, 5, 7, 9])
+25
+```
+
+#### filter
+
+Python内建的`filter()`函数用于过滤序列。
+
+和`map()`类似，`filter()`也接收一个函数和一个序列。和`map()`不同的是，`filter()`把传入的函数依次作用于每个元素，然后根据返回值是`True`还是`False`决定保留还是丢弃该元素。
+
+例如，在一个list中，删掉偶数，只保留奇数，可以这么写：
+
+```python
+def is_odd(n):
+    return n % 2 == 1
+
+list(filter(is_odd, [1, 2, 4, 5, 6, 9, 10, 15]))
+# 结果: [1, 5, 9, 15]
+```
+
+#### sorted
+
+Python内置的`sorted()`函数就可以对list进行排序：
+
+```python
+>>> sorted([36, 5, -12, 9, -21])
+[-21, -12, 5, 9, 36]
+```
+
+此外，`sorted()`函数也是一个高阶函数，它还可以接收一个`key`函数来实现自定义的排序，例如按绝对值大小排序：
+
+```python
+>>> sorted([36, 5, -12, 9, -21], key=abs)
+[5, 9, -12, -21, 36]
+```
+
+key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。
+
+### 返回函数
+
+高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。
+
+如果不需要立刻求和，而是在后面的代码中，根据需要再计算怎么办？可以不返回求和的结果，而是返回求和的函数：
+
+```python
+def lazy_sum(*args):
+    def sum():
+        ax = 0
+        for n in args:
+            ax = ax + n
+        return ax
+    return sum
+```
+
+当我们调用`lazy_sum()`时，返回的并不是求和结果，而是求和函数：
+
+```python
+>>> f = lazy_sum(1, 3, 5, 7, 9)
+>>> f
+<function lazy_sum.<locals>.sum at 0x101c6ed90>
+```
+
+调用函数`f`时，才真正计算求和的结果：
+
+```python
+>>> f()
+25
+```
+
+在这个例子中，我们在函数`lazy_sum`中又定义了函数`sum`，并且，内部函数`sum`可以引用外部函数`lazy_sum`的参数和局部变量，当`lazy_sum`返回函数`sum`时，相关参数和变量都保存在返回的函数中，这种称为“闭包（Closure）”的程序结构拥有极大的威力。
+
+请再注意一点，当我们调用`lazy_sum()`时，每次调用都会返回一个新的函数，即使传入相同的参数：
+
+```python
+>>> f1 = lazy_sum(1, 3, 5, 7, 9)
+>>> f2 = lazy_sum(1, 3, 5, 7, 9)
+>>> f1==f2
+False
+```
+
+`f1()`和`f2()`的调用结果互不影响。
+
+
+
+返回的函数并没有立刻执行，而是直到调用了`f()`才执行。我们来看一个例子：
+
+```python
+def count():
+    fs = []
+    for i in range(1, 4):
+        def f():
+             return i*i
+        fs.append(f)
+    return fs
+
+f1, f2, f3 = count()
+```
+
+在上面的例子中，每次循环，都创建了一个新的函数，然后，把创建的3个函数都返回了。
+
+你可能认为调用`f1()`，`f2()`和`f3()`结果应该是`1`，`4`，`9`，但实际结果是：
+
+```python
+>>> f1()
+9
+>>> f2()
+9
+>>> f3()
+9
+```
+
+全部都是`9`！原因就在于返回的函数引用了变量`i`，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量`i`已经变成了`3`，因此最终结果为`9`。
+
+ 返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。
+
+如果一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变：
+
+```python
+def count():
+    def f(j):
+        def g():
+            return j*j
+        return g
+    fs = []
+    for i in range(1, 4):
+        fs.append(f(i)) # f(i)立刻被执行，因此i的当前值被传入f()
+    return fs
+```
+
+再看看结果：
+
+```python
+>>> f1, f2, f3 = count()
+>>> f1()
+1
+>>> f2()
+4
+>>> f3()
+9
+```
+
+### 匿名函数
+
+在Python中，对匿名函数提供了有限支持。还是以`map()`函数为例，计算f(x)=x2时，除了定义一个`f(x)`的函数外，还可以直接传入匿名函数：
+
+```python
+>>> list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+```
+
+通过对比可以看出，匿名函数`lambda x: x * x`实际上就是：
+
+```python
+def f(x):
+    return x * x
+```
+
+关键字`lambda`表示匿名函数，冒号前面的`x`表示函数参数。
+
+匿名函数有个限制，就是只能有一个表达式，不用写`return`，返回值就是该表达式的结果。
+
+### 装饰器
+
+在面向对象（OOP）的设计模式中，decorator被称为装饰模式。OOP的装饰模式需要通过继承和组合来实现，而Python除了能支持OOP的decorator外，直接从语法层次支持decorator。Python的decorator可以用函数实现，也可以用类实现。
+
+假设我们要增强`now()`函数的功能，比如，在函数调用前后自动打印日志，但又不希望修改`now()`函数的定义，这种在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）。
+
+本质上，decorator就是一个返回函数的高阶函数。所以，我们要定义一个能打印日志的decorator，可以定义如下：
+
+```python
+def log(func):
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+```
+
+观察上面的`log`，因为它是一个decorator，所以接受一个函数作为参数，并返回一个函数。我们要借助Python的@语法，把decorator置于函数的定义处：
+
+```python
+@log
+def now():
+    print('2015-3-25')
+```
+
+调用`now()`函数，不仅会运行`now()`函数本身，还会在运行`now()`函数前打印一行日志：
+
+```python
+>>> now()
+call now():
+2015-3-25
+```
+
+### 偏函数
+
+当函数的参数个数太多，需要简化时，使用`functools.partial`可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。
+
+
+
+## 模块
+
+模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。
+
+创建自己的模块时，要注意：
+
+- 模块名要遵循Python变量命名规范，不要使用中文、特殊字符；
+- 模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在Python交互环境执行`import abc`，若成功则说明系统存在此模块。
+
+安装第三方模块：
+
+```python
+pip install Pillow
+```
+
+## 面向对象编程
+
+### 类和实例
+
+在Python中，定义类是通过`class`关键字：
+
+```python
+class Student(object):
+    pass
+```
+
+`class`后面紧接着是类名，即`Student`，类名通常是大写开头的单词，紧接着是`(object)`，表示该类是从哪个类继承下来的，继承的概念我们后面再讲，通常，如果没有合适的继承类，就使用`object`类，这是所有类最终都会继承的类。
+
+定义好了`Student`类，就可以根据`Student`类创建出`Student`的实例，创建实例是通过类名+()实现的：
+
+```python
+>>> bart = Student()
+>>> bart
+<__main__.Student object at 0x10a67a590>
+>>> Student
+<class '__main__.Student'>
+```
+
+可以看到，变量`bart`指向的就是一个`Student`的实例，后面的`0x10a67a590`是内存地址，每个object的地址都不一样，而`Student`本身则是一个类。
+
+可以自由地给一个实例变量绑定属性，比如，给实例`bart`绑定一个`name`属性：
+
+```python
+>>> bart.name = 'Bart Simpson'
+>>> bart.name
+'Bart Simpson'
+```
+
+由于类可以起到模板的作用，因此，可以在创建实例的时候，把一些我们认为必须绑定的属性强制填写进去。通过定义一个特殊的`__init__`方法，在创建实例的时候，就把`name`，`score`等属性绑上去：
+
+```python
+class Student(object):
+
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+```
+
+ 注意：特殊方法“__init__”前后分别有两个下划线！！！
+
+注意到`__init__`方法的第一个参数永远是`self`，表示创建的实例本身，因此，在`__init__`方法内部，就可以把各种属性绑定到`self`，因为`self`就指向创建的实例本身。
+
+### 访问限制
+
+属性的名称前加上两个下划线`__`，在Python中，实例的变量名如果以`__`开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问
+
+需要注意的是，在Python中，变量名类似`__xxx__`的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用`__name__`、`__score__`这样的变量名。
+
+有些时候，你会看到以一个下划线开头的实例变量名，比如`_name`，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，当你看到这样的变量时，意思就是，“虽然我可以被访问，但是，请把我视为私有变量，不要随意访问”。
+
+双下划线开头的实例变量是不是一定不能从外部访问呢？其实也不是。不能直接访问`__name`是因为Python解释器对外把`__name`变量改成了`_Student__name`，所以，仍然可以通过`_Student__name`来访问`__name`变量：
+
+```python
+>>> bart._Student__name
+'Bart Simpson'
+```
+
+但是强烈建议你不要这么干，因为不同版本的Python解释器可能会把`__name`改成不同的变量名。
+
+最后注意下面的这种*错误写法*：
+
+```python
+>>> bart = Student('Bart Simpson', 59)
+>>> bart.get_name()
+'Bart Simpson'
+>>> bart.__name = 'New Name' # 设置__name变量！
+>>> bart.__name
+'New Name'
+```
+
+表面上看，外部代码“成功”地设置了`__name`变量，但实际上这个`__name`变量和class内部的`__name`变量*不是*一个变量！内部的`__name`变量已经被Python解释器自动改成了`_Student__name`，而外部代码给`bart`新增了一个`__name`变量。
+
+### 继承和多态
+
+继承可以把父类的所有功能都直接拿过来，这样就不必重零做起，子类只需要新增自己特有的方法，也可以把父类不适合的方法覆盖重写。
+
+动态语言的鸭子类型特点决定了继承不像静态语言那样是必须的。这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。
+
+### 获取对象信息
+
+type()判断对象类型
+
+isinstance()对于class的继承关系来说，使用`type()`就很不方便。我们要判断class的类型，可以使用`isinstance()`函数。
+
+dir()
+
+如果要获得一个对象的所有属性和方法，可以使用`dir()`函数，它返回一个包含字符串的list，比如，获得一个str对象的所有属性和方法：
+
+```python
+>>> dir('ABC')
+['__add__', '__class__',..., '__subclasshook__', 'capitalize', 'casefold',..., 'zfill']
+```
+
+类似`__xxx__`的属性和方法在Python中都是有特殊用途的，比如`__len__`方法返回长度。在Python中，如果你调用`len()`函数试图获取一个对象的长度，实际上，在`len()`函数内部，它自动去调用该对象的`__len__()`方法，所以，下面的代码是等价的：
+
+```python
+>>> len('ABC')
+3
+>>> 'ABC'.__len__()
+3
+```
+
+我们自己写的类，如果也想用`len(myObj)`的话，就自己写一个`__len__()`方法：
+
+```python
+>>> class MyDog(object):
+...     def __len__(self):
+...         return 100
+...
+>>> dog = MyDog()
+>>> len(dog)
+100
+```
+
+### 实例属性和类属性
+
+当我们定义了一个类属性后，这个属性虽然归类所有，但类的所有实例都可以访问到。来测试一下：
+
+```python
+>>> class Student(object):
+...     name = 'Student'
+...
+>>> s = Student() # 创建实例s
+>>> print(s.name) # 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性
+Student
+>>> print(Student.name) # 打印类的name属性
+Student
+>>> s.name = 'Michael' # 给实例绑定name属性
+>>> print(s.name) # 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性
+Michael
+>>> print(Student.name) # 但是类属性并未消失，用Student.name仍然可以访问
+Student
+>>> del s.name # 如果删除实例的name属性
+>>> print(s.name) # 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了
+Student
+```
+
+从上面的例子可以看出，在编写程序的时候，千万不要对实例属性和类属性使用相同的名字，因为相同名称的实例属性将屏蔽掉类属性，但是当你删除实例属性后，再使用相同的名称，访问到的将是类属性。
+
 ## python中常用的函数：
 
 range()可以生成一个整数序列，e.g. range(5)生成的序列是**从0开始小于5的整数，range函数生成的数的范围是左闭右开**
+
+format()格式化
 
 str.strip()去除首尾空格
 
@@ -594,3 +988,13 @@ max()求最大值
 enumerate()参数是个list，把一个list变成索引-元素对
 
 iter()函数可以获得一个`Iterator`对象
+
+map()
+
+reduce()
+
+filter()
+
+sorted()
+
+functools.partial(int, base=2)
