@@ -975,6 +975,358 @@ Student
 
 ## 面向对象高级编程
 
+### __ slots __
+
+Python允许在定义class的时候，定义一个特殊的`__slots__`变量，来限制该class实例能添加的属性：
+
+```python
+class Student(object):
+    __slots__ = ('name', 'age') # 用tuple定义允许绑定的属性名称
+```
+
+然后，我们试试：
+
+```python
+>>> s = Student() # 创建新的实例
+>>> s.name = 'Michael' # 绑定属性'name'
+>>> s.age = 25 # 绑定属性'age'
+>>> s.score = 99 # 绑定属性'score'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Student' object has no attribute 'score'
+```
+
+由于`'score'`没有被放到`__slots__`中，所以不能绑定`score`属性，试图绑定`score`将得到`AttributeError`的错误。
+
+**注意**：使用`__slots__`要注意，`__slots__`定义的属性仅对当前类实例起作用，对继承的子类是不起作用的！！
+
+除非在子类中也定义`__slots__`，这样，子类实例允许定义的属性就是自身的`__slots__`加上父类的`__slots__`。
+
+### @property
+
+Python内置的`@property`装饰器就是负责把一个方法变成属性调用的：
+
+```python
+class Student(object):
+
+    @property
+    def score(self):
+        return self._score
+
+    @score.setter
+    def score(self, value):
+        if not isinstance(value, int):
+            raise ValueError('score must be an integer!')
+        if value < 0 or value > 100:
+            raise ValueError('score must between 0 ~ 100!')
+        self._score = value
+```
+
+`@property`的实现比较复杂，我们先考察如何使用。把一个getter方法变成属性，只需要加上`@property`就可以了，此时，`@property`本身又创建了另一个装饰器`@score.setter`，负责把一个setter方法变成属性赋值，于是，我们就拥有一个可控的属性操作：
+
+```python
+>>> s = Student()
+>>> s.score = 60 # OK，实际转化为s.set_score(60)
+>>> s.score # OK，实际转化为s.get_score()
+60
+>>> s.score = 9999
+Traceback (most recent call last):
+  ...
+ValueError: score must between 0 ~ 100!
+```
+
+注意到这个神奇的`@property`，我们在对实例属性操作的时候，就知道该属性很可能不是直接暴露的，而是通过getter和setter方法来实现的。
+
+还可以定义只读属性，只定义getter方法，不定义setter方法就是一个只读属性：
+
+```python
+class Student(object):
+
+    @property
+    def birth(self):
+        return self._birth
+
+    @birth.setter
+    def birth(self, value):
+        self._birth = value
+
+    @property
+    def age(self):
+        return 2015 - self._birth
+```
+
+上面的`birth`是可读写属性，而`age`就是一个*只读*属性，因为`age`可以根据`birth`和当前时间计算出来。
+
+### 多重继承
+
+由于Python允许使用多重继承，因此，MixIn就是一种常见的设计。
+
+只允许单一继承的语言（如Java）不能使用MixIn的设计。
+
+### 定制类
+
+#### __ str __
+
+我们先定义一个`Student`类，打印一个实例：
+
+```python
+>>> class Student(object):
+...     def __init__(self, name):
+...         self.name = name
+...
+>>> print(Student('Michael'))
+<__main__.Student object at 0x109afb190>
+```
+
+打印出一堆`<__main__.Student object at 0x109afb190>`，不好看。
+
+怎么才能打印得好看呢？只需要定义好`__str__()`方法，返回一个好看的字符串就可以了：
+
+```python
+>>> class Student(object):
+...     def __init__(self, name):
+...         self.name = name
+...     def __str__(self):
+...         return 'Student object (name: %s)' % self.name
+...
+>>> print(Student('Michael'))
+Student object (name: Michael)
+```
+
+#### __ repr __
+
+直接敲变量不用`print`，打印出来的实例还是不好看：
+
+```python
+>>> s = Student('Michael')
+>>> s
+<__main__.Student object at 0x109afb310>
+```
+
+这是因为直接显示变量调用的不是`__str__()`，而是`__repr__()`，两者的区别是`__str__()`返回用户看到的字符串，而`__repr__()`返回程序开发者看到的字符串，也就是说，`__repr__()`是为调试服务的。
+
+解决办法是再定义一个`__repr__()`。但是通常`__str__()`和`__repr__()`代码都是一样的，所以，有个偷懒的写法：
+
+```python
+class Student(object):
+    def __init__(self, name):
+        self.name = name
+    def __str__(self):
+        return 'Student object (name=%s)' % self.name
+    __repr__ = __str__
+```
+
+#### __ iter __
+
+如果一个类想被用于`for ... in`循环，类似list或tuple那样，就必须实现一个`__iter__()`方法，该方法返回一个迭代对象，然后，Python的for循环就会不断调用该迭代对象的`__next__()`方法拿到循环的下一个值，直到遇到`StopIteration`错误时退出循环。
+
+如果一个类想被用于`for ... in`循环，类似list或tuple那样，就必须实现一个`__iter__()`方法，该方法返回一个迭代对象，然后，Python的for循环就会不断调用该迭代对象的`__next__()`方法拿到循环的下一个值，直到遇到`StopIteration`错误时退出循环。
+
+我们以斐波那契数列为例，写一个Fib类，可以作用于for循环：
+
+```python
+class Fib(object):
+    def __init__(self):
+        self.a, self.b = 0, 1 # 初始化两个计数器a，b
+
+    def __iter__(self):
+        return self # 实例本身就是迭代对象，故返回自己
+
+    def __next__(self):
+        self.a, self.b = self.b, self.a + self.b # 计算下一个值
+        if self.a > 100000: # 退出循环的条件
+            raise StopIteration()
+        return self.a # 返回下一个值
+```
+
+#### __ getitem __
+
+Fib实例虽然能作用于for循环，看起来和list有点像，但是，把它当成list来使用还是不行，比如，取第5个元素：
+
+```python
+>>> Fib()[5]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'Fib' object does not support indexing
+```
+
+要表现得像list那样按照下标取出元素，需要实现`__getitem__()`方法：
+
+```python
+class Fib(object):
+    def __getitem__(self, n):
+        a, b = 1, 1
+        for x in range(n):
+            a, b = b, a + b
+        return a
+```
+
+现在，就可以按下标访问数列的任意一项了：
+
+```python
+>>> f = Fib()
+>>> f[0]
+1
+>>> f[1]
+1
+>>> f[2]
+2
+>>> f[3]
+3
+>>> f[10]
+89
+>>> f[100]
+573147844013817084101
+```
+
+但是list有个神奇的切片方法：
+
+```python
+>>> list(range(100))[5:10]
+[5, 6, 7, 8, 9]
+```
+
+对于Fib却报错。原因是`__getitem__()`传入的参数可能是一个int，也可能是一个切片对象`slice`，所以要做判断：
+
+```python
+class Fib(object):
+    def __getitem__(self, n):
+        if isinstance(n, int): # n是索引
+            a, b = 1, 1
+            for x in range(n):
+                a, b = b, a + b
+            return a
+        if isinstance(n, slice): # n是切片
+            start = n.start
+            stop = n.stop
+            if start is None:
+                start = 0
+            a, b = 1, 1
+            L = []
+            for x in range(stop):
+                if x >= start:
+                    L.append(a)
+                a, b = b, a + b
+            return L
+```
+
+现在试试Fib的切片：
+
+```python
+>>> f = Fib()
+>>> f[0:5]
+[1, 1, 2, 3, 5]
+>>> f[:10]
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+```
+
+但是没有对step参数作处理：
+
+```python
+>>> f[:10:2]
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+```
+
+也没有对负数作处理，所以，要正确实现一个`__getitem__()`还是有很多工作要做的。
+
+此外，如果把对象看成`dict`，`__getitem__()`的参数也可能是一个可以作key的object，例如`str`。
+
+与之对应的是`__setitem__()`方法，把对象视作list或dict来对集合赋值。最后，还有一个`__delitem__()`方法，用于删除某个元素。
+
+总之，通过上面的方法，我们自己定义的类表现得和Python自带的list、tuple、dict没什么区别，这完全归功于动态语言的“鸭子类型”，不需要强制继承某个接口。
+
+#### __ getattr __
+
+正常情况下，当我们调用类的方法或属性时，如果不存在，就会报错。比如定义`Student`类：
+
+```python
+class Student(object):
+    
+    def __init__(self):
+        self.name = 'Michael'
+```
+
+调用`name`属性，没问题，但是，调用不存在的`score`属性，就有问题了：
+
+```python
+>>> s = Student()
+>>> print(s.name)
+Michael
+>>> print(s.score)
+Traceback (most recent call last):
+  ...
+AttributeError: 'Student' object has no attribute 'score'
+```
+
+错误信息很清楚地告诉我们，没有找到`score`这个attribute。
+
+要避免这个错误，除了可以加上一个`score`属性外，Python还有另一个机制，那就是写一个`__getattr__()`方法，动态返回一个属性。修改如下：
+
+```python
+class Student(object):
+
+    def __init__(self):
+        self.name = 'Michael'
+
+    def __getattr__(self, attr):
+        if attr=='score':
+            return 99
+```
+
+当调用不存在的属性时，比如`score`，Python解释器会试图调用`__getattr__(self, 'score')`来尝试获得属性，这样，我们就有机会返回`score`的值：
+
+```python
+>>> s = Student()
+>>> s.name
+'Michael'
+>>> s.score
+99
+```
+
+#### __ call __
+
+一个对象实例可以有自己的属性和方法，当我们调用实例方法时，我们用`instance.method()`来调用。能不能直接在实例本身上调用呢？在Python中，答案是肯定的。
+
+任何类，只需要定义一个`__call__()`方法，就可以直接对实例进行调用。请看示例：
+
+```python
+class Student(object):
+    def __init__(self, name):
+        self.name = name
+
+    def __call__(self):
+        print('My name is %s.' % self.name)
+```
+
+调用方式如下：
+
+```python
+>>> s = Student('Michael')
+>>> s() # self参数不要传入
+My name is Michael.
+```
+
+`__call__()`还可以定义参数。对实例进行直接调用就好比对一个函数进行调用一样，所以你完全可以把对象看成函数，把函数看成对象，因为这两者之间本来就没啥根本的区别。
+
+如果你把对象看成函数，那么函数本身其实也可以在运行期动态创建出来，因为类的实例都是运行期创建出来的，这么一来，我们就模糊了对象和函数的界限。
+
+那么，怎么判断一个变量是对象还是函数呢？其实，更多的时候，我们需要判断一个对象是否能被调用，能被调用的对象就是一个`Callable`对象，比如函数和我们上面定义的带有`__call__()`的类实例：
+
+```python
+>>> callable(Student())
+True
+>>> callable(max)
+True
+>>> callable([1, 2, 3])
+False
+>>> callable(None)
+False
+>>> callable('str')
+False
+```
+
+通过`callable()`函数，我们就可以判断一个对象是否是“可调用”对象。
+
 ## 专题：super()和`__init__`的关系
 
 **super(类名, self)格式为硬性要求**
@@ -1086,29 +1438,29 @@ leave A
 
 ## python中常用的函数：
 
-range()可以生成一个整数序列，e.g. range(5)生成的序列是**从0开始小于5的整数，range函数生成的数的范围是左闭右开**
+**range()** ：可以生成一个整数序列，e.g. range(5)生成的序列是**从0开始小于5的整数，range函数生成的数的范围是左闭右开**
 
-format()格式化
+**format()**：格式化
 
-str.strip()去除首尾空格
+**str.strip()**：去除首尾空格
 
-isinstance(object1,type2)判断类型
+**isinstance(object1,type2)**：判断类型
 
-max()求最大值
+**max()**：求最大值
 
-enumerate()参数是个list，把一个list变成索引-元素对
+**enumerate()**：参数是个list，把一个list变成索引-元素对
 
-iter()函数可以获得一个`Iterator`对象
+**iter()**：函数可以获得一个`Iterator`对象
 
-map()
+**map()**：接收两个参数，一个是函数，一个是`Iterable`，`map`将传入的函数依次作用到序列的每个元素，并把结果作为新的`Iterator`返回。
 
-reduce()
+**reduce()** ：`reduce`把一个函数作用在一个序列`[x1, x2, x3, ...]`上，这个函数必须接收两个参数，`reduce`把结果继续和序列的下一个元素做累积计算
 
-filter()
+**filter()** ：用于过滤序列。和`map()`类似，`filter()`也接收一个函数和一个序列。和`map()`不同的是，`filter()`把传入的函数依次作用于每个元素，然后根据返回值是`True`还是`False`决定保留还是丢弃该元素。
 
-sorted()
+**sorted()**:
 
-functools.partial(int, base=2)
+**functools.partial(int, base=2)**:偏函数
 
-`self.__class__.mro()`  mro()用来获得类的继承顺序。
+**`self.__class__.mro()`**：  mro()用来获得类的继承顺序。
 
