@@ -973,6 +973,117 @@ Student
 
 从上面的例子可以看出，在编写程序的时候，千万不要对实例属性和类属性使用相同的名字，因为相同名称的实例属性将屏蔽掉类属性，但是当你删除实例属性后，再使用相同的名称，访问到的将是类属性。
 
+## 面向对象高级编程
+
+## 专题：super()和`__init__`的关系
+
+**super(类名, self)格式为硬性要求**
+
+1.单继承时super()和__init__()实现的功能是类似的
+
+```python
+class Base(object):
+    def __init__(self):
+        print 'Base create'
+ 
+class childA(Base):
+    def __init__(self):
+        print 'creat A ',
+        Base.__init__(self)
+ 
+ 
+class childB(Base):
+    def __init__(self):
+        print 'creat B ',
+        super(childB, self).__init__()
+ 
+base = Base()
+ 
+a = childA()
+b = childB()
+
+#输出：
+
+Base create
+creat A  Base create
+creat B  Base create
+```
+
+2.在多重继承时会涉及继承顺序，super（）相当于返回继承顺序的下一个类，而不是父类
+
+```python
+def super(class_name, self):
+    mro = self.__class__.mro()
+    return mro[mro.index(class_name) + 1]
+
+
+#mro()用来获得类的继承顺序。
+
+
+例如：
+
+class Base(object):
+    def __init__(self):
+        print 'Base create'
+ 
+class childA(Base):
+    def __init__(self):
+        print 'enter A '
+        # Base.__init__(self)
+        super(childA, self).__init__()
+        print 'leave A'
+ 
+ 
+class childB(Base):
+    def __init__(self):
+        print 'enter B '
+        # Base.__init__(self)
+        super(childB, self).__init__()
+        print 'leave B'
+ 
+class childC(childA, childB):
+    pass
+ 
+c = childC()
+print c.__class__.__mro__
+
+#输出：
+
+enter A 
+enter B 
+Base create
+leave B
+leave A
+(<class '__main__.childC'>, <class '__main__.childA'>, <class '__main__.childB'>, <class '__main__.Base'>, <type 'object'>)
+```
+
+
+
+supder和父类没有关联，因此执行顺序是A —> B—>—>Base
+
+　　执行过程相当于：初始化childC()时，先会去调用childA的构造方法中的` super(childA, self).__init__()`， super(childA, self)返回当前类的继承顺序中childA后的一个类childB；然后再执行`childB().__init()__`,这样顺序执行下去。
+
+　　在多重继承里，如果把childA()中的 `super(childA, self).__init__()` 换成`Base.__init__(self)`，在执行时，继承childA后就会直接跳到Base类里，而略过了childB：
+
+```python
+enter A 
+Base create
+leave A
+(<class '__main__.childC'>, <class '__main__.childA'>, <class '__main__.childB'>, <class '__main__.Base'>, <type 'object'>)
+```
+
+　　
+
+　　从super()方法可以看出，super（）的第一个参数可以是继承链中任意一个类的名字，
+
+　　如果是本身就会依次继承下一个类；
+
+　　如果是继承链里之前的类便会无限递归下去；
+
+　　如果是继承链里之后的类便会忽略继承链汇总本身和传入类之间的类；
+
+　　比如将childA()中的super改为：`super(childC, self).__init__()`，程序就会无限递归下去。
+
 ## python中常用的函数：
 
 range()可以生成一个整数序列，e.g. range(5)生成的序列是**从0开始小于5的整数，range函数生成的数的范围是左闭右开**
@@ -994,7 +1105,10 @@ map()
 reduce()
 
 filter()
-:s
+
 sorted()
 
 functools.partial(int, base=2)
+
+`self.__class__.mro()`  mro()用来获得类的继承顺序。
+
