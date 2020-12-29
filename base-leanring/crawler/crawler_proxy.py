@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     }
     result = []
-    for i in range(1, 2):
+    for i in range(1, 5):
         http_response = requests.get('https://www.fanqieip.com/free/China/' + str(i), headers=headers)
         result_list = parse_list(http_response.text)
         if result_list is None:
