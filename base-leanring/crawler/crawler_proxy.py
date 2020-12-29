@@ -1,66 +1,46 @@
-'''
-Python 3.x
-描述：本DEMO演示了使用爬虫（动态）代理IP请求网页的过程，代码使用了多线程
-逻辑：每隔5秒从API接口获取IP，对于每一个IP开启一个线程去抓取网页源码
-'''
 import requests
+from lxml import etree
 import time
-import threading
-from requests.packages import urllib3
-
-ips = []
+"""爬取番茄代理IP"""
 
 
-# 爬数据的线程类
-class CrawlThread(threading.Thread):
-    def __init__(self, proxyip):
-        super(CrawlThread, self).__init__()
-        self.proxyip = proxyip
-
-    def run(self):
-        # 开始计时
-        start = time.time()
-        # 消除关闭证书验证的警告
-        urllib3.disable_warnings()
-        # 使用代理IP请求网址，注意第三个参数verify=False意思是跳过SSL验证（可以防止报SSL错误）
-        html = requests.get(url=targetUrl,
-                            proxies={"http": 'http://' + self.proxyip, "https": 'https://' + self.proxyip},
-                            verify=False, timeout=15).content.decode()
-        # 结束计时
-        end = time.time()
-        # 输出内容
-        print(threading.current_thread().getName() + "使用代理IP, 耗时 " + str(
-            end - start) + "毫秒 " + self.proxyip + " 获取到如下HTML内容：\n" + html + "\n*************")
-
-
-# 获取代理IP的线程类
-class GetIpThread(threading.Thread):
-    def __init__(self, fetchSecond):
-        super(GetIpThread, self).__init__()
-        self.fetchSecond = fetchSecond
-
-    def run(self):
-        global ips
-        while True:
-            # 获取IP列表
-            res = requests.get(apiUrl).content.decode()
-            # 按照\n分割获取到的IP
-            ips = res.split('\n')
-            # 利用每一个IP
-            for proxyip in ips:
-                if proxyip.strip():
-                    # 开启一个线程
-                    CrawlThread(proxyip).start()
-            # 休眠
-            time.sleep(self.fetchSecond)
+def parse_list(response):
+    selector = etree.HTML(response)
+    elements = selector.xpath('//div[@class="table-responsive mb-0"]/table/tbody/tr')
+    if elements is None or len(elements) == 0:
+        return None
+    ip_list = []
+    for element in elements:
+        ip_dict = {'ip': element.xpath('./td[1]/div/text()')[0], 'port': element.xpath('./td[2]/div/text()')[0],
+                   'address': element.xpath('./td[3]/div/text()')[0], 'ip_type': element.xpath('./td[4]/div/text()')[0]}
+        ip_list.append(ip_dict)
+    return ip_list
 
 
 if __name__ == '__main__':
-    # 获取IP的API接口
-    apiUrl = "http:xxxx"
-    # 要抓取的目标网站地址
-    targetUrl = "http://ip.chinaz.com/getip.aspx"
-    # 获取IP时间间隔，建议为5秒
-    fetchSecond = 5
-    # 开始自动获取IP
-    GetIpThread(fetchSecond).start()
+    start_time = time.time()
+    headers = {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,"
+                  "application/signed-exchange;v=b3;q=0.9",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "Cache-Control": "max-age=0",
+        "Host": "www.fanqieip.com",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66"
+
+    }
+    result = []
+    for i in range(1, 2):
+        http_response = requests.get('https://www.fanqieip.com/free/China/' + str(i), headers=headers)
+        result_list = parse_list(http_response.text)
+        if result_list is None:
+            continue
+        result.extend(result_list)
+    end_time = time.time()
+    print("总共消耗%.2f秒" % (end_time - start_time))
+    print("总共%d条" % len(result))
+
+    # for e in result:
+    #     print(e['ip'], e['port'], e['address'], e['ip_type'])
