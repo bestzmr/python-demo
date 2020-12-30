@@ -1,0 +1,1587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gtr:searchResult xmlns:gtr="http://gtr.ukri.org/api">
+    <gtr:resourceHitCounts>
+        <gtr:resourceHitCount>
+            <gtr:count>740604</gtr:count>
+            <gtr:resource>outcomes</gtr:resource>
+        </gtr:resourceHitCount>
+        <gtr:resourceHitCount>
+            <gtr:count>113574</gtr:count>
+            <gtr:resource>classificationproject</gtr:resource>
+        </gtr:resourceHitCount>
+        <gtr:resourceHitCount>
+            <gtr:count>99605</gtr:count>
+            <gtr:resource>person</gtr:resource>
+        </gtr:resourceHitCount>
+        <gtr:resourceHitCount>
+            <gtr:count>922539</gtr:count>
+            <gtr:resource>publication</gtr:resource>
+        </gtr:resourceHitCount>
+        <gtr:resourceHitCount>
+            <gtr:count>113574</gtr:count>
+            <gtr:resource>project</gtr:resource>
+        </gtr:resourceHitCount>
+        <gtr:resourceHitCount>
+            <gtr:count>50822</gtr:count>
+            <gtr:resource>organisation</gtr:resource>
+        </gtr:resourceHitCount>
+    </gtr:resourceHitCounts>
+    <gtr:sortableFields>
+        <gtr:sortableField>
+            <gtr:displayName>Start Date</gtr:displayName>
+            <gtr:fieldName>pro.sd</gtr:fieldName>
+        </gtr:sortableField>
+        <gtr:sortableField>
+            <gtr:displayName>End Date</gtr:displayName>
+            <gtr:fieldName>pro.ed</gtr:fieldName>
+        </gtr:sortableField>
+        <gtr:sortableField>
+            <gtr:displayName>Funded Value</gtr:displayName>
+            <gtr:fieldName>pro.am</gtr:fieldName>
+        </gtr:sortableField>
+        <gtr:sortableField>
+            <gtr:displayName>Relevance</gtr:displayName>
+            <gtr:fieldName>score</gtr:fieldName>
+        </gtr:sortableField>
+    </gtr:sortableFields>
+    <gtr:searchableFields>
+        <gtr:searchableField>
+            <gtr:displayName>ORCID iD</gtr:displayName>
+            <gtr:fieldName>pro.orcidId</gtr:fieldName>
+        </gtr:searchableField>
+        <gtr:searchableField>
+            <gtr:displayName>Project Abstract</gtr:displayName>
+            <gtr:fieldName>pro.a</gtr:fieldName>
+        </gtr:searchableField>
+        <gtr:searchableField>
+            <gtr:displayName>Project Reference</gtr:displayName>
+            <gtr:fieldName>pro.gr</gtr:fieldName>
+        </gtr:searchableField>
+        <gtr:searchableField>
+            <gtr:displayName>Project Title</gtr:displayName>
+            <gtr:fieldName>pro.t</gtr:fieldName>
+        </gtr:searchableField>
+    </gtr:searchableFields>
+    <gtr:facetGroups>
+        <gtr:facetGroup>
+            <gtr:name>Project Status</gtr:name>
+            <gtr:facets>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>73936</gtr:count>
+                    <gtr:id>c3RhdHVzfENsb3NlZHxzdHJpbmc=</gtr:id>
+                    <gtr:name>Closed</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>39638</gtr:count>
+                    <gtr:id>c3RhdHVzfEFjdGl2ZXxzdHJpbmc=</gtr:id>
+                    <gtr:name>Active</gtr:name>
+                </gtr:facet>
+            </gtr:facets>
+            <gtr:sortOrder>A</gtr:sortOrder>
+        </gtr:facetGroup>
+        <gtr:facetGroup>
+            <gtr:name>Funded Amount</gtr:name>
+            <gtr:facets>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>55061</gtr:count>
+                    <gtr:id>YW1vdW50fC05MjIzMzcyMDM2ODU0Nzc1ODA4XzEwMDAwMHxyYW5nZQ==</gtr:id>
+                    <gtr:name>Up to £100K</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>49896</gtr:count>
+                    <gtr:id>YW1vdW50fDEwMDAwMF8xMDAwMDAwfHJhbmdl</gtr:id>
+                    <gtr:name>£100K to £1M</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>8222</gtr:count>
+                    <gtr:id>YW1vdW50fDEwMDAwMDBfMTAwMDAwMDB8cmFuZ2U=</gtr:id>
+                    <gtr:name>£1M to £10M</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>395</gtr:count>
+                    <gtr:id>YW1vdW50fDEwMDAwMDAwXzkyMjMzNzIwMzY4NTQ3NzU4MDd8cmFuZ2U=</gtr:id>
+                    <gtr:name>Above £10M</gtr:name>
+                </gtr:facet>
+            </gtr:facets>
+            <gtr:sortOrder>N</gtr:sortOrder>
+        </gtr:facetGroup>
+        <gtr:facetGroup>
+            <gtr:name>Region</gtr:name>
+            <gtr:facets>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>19301</gtr:count>
+                    <gtr:id>cmVnaW9ufFVua25vd258c3RyaW5n</gtr:id>
+                    <gtr:name>Unknown</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>16672</gtr:count>
+                    <gtr:id>cmVnaW9ufFNvdXRoIEVhc3R8c3RyaW5n</gtr:id>
+                    <gtr:name>South East</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>14925</gtr:count>
+                    <gtr:id>cmVnaW9ufExvbmRvbnxzdHJpbmc=</gtr:id>
+                    <gtr:name>London</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>12250</gtr:count>
+                    <gtr:id>cmVnaW9ufFNjb3RsYW5kfHN0cmluZw==</gtr:id>
+                    <gtr:name>Scotland</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>8593</gtr:count>
+                    <gtr:id>cmVnaW9ufFlvcmtzaGlyZSBhbmQgVGhlIEh1bWJlcnxzdHJpbmc=</gtr:id>
+                    <gtr:name>Yorkshire and The Humber</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>7436</gtr:count>
+                    <gtr:id>cmVnaW9ufE5vcnRoIFdlc3R8c3RyaW5n</gtr:id>
+                    <gtr:name>North West</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>6778</gtr:count>
+                    <gtr:id>cmVnaW9ufFdlc3QgTWlkbGFuZHN8c3RyaW5n</gtr:id>
+                    <gtr:name>West Midlands</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>6657</gtr:count>
+                    <gtr:id>cmVnaW9ufFNvdXRoIFdlc3R8c3RyaW5n</gtr:id>
+                    <gtr:name>South West</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>6610</gtr:count>
+                    <gtr:id>cmVnaW9ufEVhc3QgTWlkbGFuZHN8c3RyaW5n</gtr:id>
+                    <gtr:name>East Midlands</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5340</gtr:count>
+                    <gtr:id>cmVnaW9ufEVhc3Qgb2YgRW5nbGFuZHxzdHJpbmc=</gtr:id>
+                    <gtr:name>East of England</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>3679</gtr:count>
+                    <gtr:id>cmVnaW9ufFdhbGVzfHN0cmluZw==</gtr:id>
+                    <gtr:name>Wales</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>2781</gtr:count>
+                    <gtr:id>cmVnaW9ufE5vcnRoIEVhc3R8c3RyaW5n</gtr:id>
+                    <gtr:name>North East</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>1526</gtr:count>
+                    <gtr:id>cmVnaW9ufE5vcnRoZXJuIElyZWxhbmR8c3RyaW5n</gtr:id>
+                    <gtr:name>Northern Ireland</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>467</gtr:count>
+                    <gtr:id>cmVnaW9ufE91dHNpZGUgVUt8c3RyaW5n</gtr:id>
+                    <gtr:name>Outside UK</gtr:name>
+                </gtr:facet>
+            </gtr:facets>
+            <gtr:sortOrder>A</gtr:sortOrder>
+        </gtr:facetGroup>
+        <gtr:facetGroup>
+            <gtr:name>Project Category</gtr:name>
+            <gtr:facets>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>52120</gtr:count>
+                    <gtr:id>Y2F0fFJlc2VhcmNoIEdyYW50fHN0cmluZw==</gtr:id>
+                    <gtr:name>Research Grant</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>21834</gtr:count>
+                    <gtr:id>Y2F0fFN0dWRlbnRzaGlwfHN0cmluZw==</gtr:id>
+                    <gtr:name>Studentship</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>7187</gtr:count>
+                    <gtr:id>Y2F0fFRyYWluaW5nIEdyYW50fHN0cmluZw==</gtr:id>
+                    <gtr:name>Training Grant</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>6496</gtr:count>
+                    <gtr:id>Y2F0fEZlbGxvd3NoaXB8c3RyaW5n</gtr:id>
+                    <gtr:name>Fellowship</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5150</gtr:count>
+                    <gtr:id>Y2F0fENvbGxhYm9yYXRpdmUgUiZEfHN0cmluZw==</gtr:id>
+                    <gtr:name>Collaborative R&amp;D</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5082</gtr:count>
+                    <gtr:id>Y2F0fEZlYXNpYmlsaXR5IFN0dWRpZXN8c3RyaW5n</gtr:id>
+                    <gtr:name>Feasibility Studies</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>3798</gtr:count>
+                    <gtr:id>Y2F0fEludHJhbXVyYWx8c3RyaW5n</gtr:id>
+                    <gtr:name>Intramural</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>3255</gtr:count>
+                    <gtr:id>Y2F0fFZvdWNoZXJzfHN0cmluZw==</gtr:id>
+                    <gtr:name>Vouchers</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>2641</gtr:count>
+                    <gtr:id>Y2F0fEtub3dsZWRnZSBUcmFuc2ZlciBQYXJ0bmVyc2hpcHxzdHJpbmc=</gtr:id>
+                    <gtr:name>Knowledge Transfer Partnership</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>846</gtr:count>
+                    <gtr:id>Y2F0fFNtYWxsIEJ1c2luZXNzIFJlc2VhcmNoIEluaXRpYXRpdmV8c3RyaW5n</gtr:id>
+                    <gtr:name>Small Business Research Initiative</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>807</gtr:count>
+                    <gtr:id>Y2F0fEdSRCBQcm9vZiBvZiBDb25jZXB0fHN0cmluZw==</gtr:id>
+                    <gtr:name>GRD Proof of Concept</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>735</gtr:count>
+                    <gtr:id>Y2F0fEdSRCBEZXZlbG9wbWVudCBvZiBQcm90b3R5cGV8c3RyaW5n</gtr:id>
+                    <gtr:name>GRD Development of Prototype</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>640</gtr:count>
+                    <gtr:id>Y2F0fEdSRCBQcm9vZiBvZiBNYXJrZXR8c3RyaW5n</gtr:id>
+                    <gtr:name>GRD Proof of Market</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>578</gtr:count>
+                    <gtr:id>Y2F0fEVVLUZ1bmRlZHxzdHJpbmc=</gtr:id>
+                    <gtr:name>EU-Funded</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>527</gtr:count>
+                    <gtr:id>Y2F0fFN0dWR5fHN0cmluZw==</gtr:id>
+                    <gtr:name>Study</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>520</gtr:count>
+                    <gtr:id>Y2F0fEJJUy1GdW5kZWQgUHJvZ3JhbW1lc3xzdHJpbmc=</gtr:id>
+                    <gtr:name>BIS-Funded Programmes</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>288</gtr:count>
+                    <gtr:id>Y2F0fE90aGVyIEdyYW50fHN0cmluZw==</gtr:id>
+                    <gtr:name>Other Grant</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>196</gtr:count>
+                    <gtr:id>Y2F0fENlbnRyZXN8c3RyaW5n</gtr:id>
+                    <gtr:name>Centres</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>149</gtr:count>
+                    <gtr:id>Y2F0fFNNRSBTdXBwb3J0fHN0cmluZw==</gtr:id>
+                    <gtr:name>SME Support</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>132</gtr:count>
+                    <gtr:id>Y2F0fEZhc3QgVHJhY2t8c3RyaW5n</gtr:id>
+                    <gtr:name>Fast Track</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>101</gtr:count>
+                    <gtr:id>Y2F0fExlZ2FjeSBSREEgR3JhbnQgZm9yIFImRHxzdHJpbmc=</gtr:id>
+                    <gtr:name>Legacy RDA Grant for R&amp;D</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>98</gtr:count>
+                    <gtr:id>Y2F0fEtub3dsZWRnZSBUcmFuc2ZlciBOZXR3b3JrfHN0cmluZw==</gtr:id>
+                    <gtr:name>Knowledge Transfer Network</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>97</gtr:count>
+                    <gtr:id>Y2F0fExhdW5jaHBhZHxzdHJpbmc=</gtr:id>
+                    <gtr:name>Launchpad</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>68</gtr:count>
+                    <gtr:id>Y2F0fENSJkQgQmlsYXRlcmFsfHN0cmluZw==</gtr:id>
+                    <gtr:name>CR&amp;D Bilateral</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>47</gtr:count>
+                    <gtr:id>Y2F0fFByb2N1cmVtZW50fHN0cmluZw==</gtr:id>
+                    <gtr:name>Procurement</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>44</gtr:count>
+                    <gtr:id>Y2F0fExhcmdlIFByb2plY3R8c3RyaW5n</gtr:id>
+                    <gtr:name>Large Project</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>33</gtr:count>
+                    <gtr:id>Y2F0fFJlc3BvbnNpdmUgU3RyYXRlZ3kgYW5kIFBsYW5uaW5nfHN0cmluZw==</gtr:id>
+                    <gtr:name>Responsive Strategy and Planning</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>27</gtr:count>
+                    <gtr:id>Y2F0fExlZ2FjeSBSREEgQ29sbGFib3JhdGl2ZSBSJkR8c3RyaW5n</gtr:id>
+                    <gtr:name>Legacy RDA Collaborative R&amp;D</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>25</gtr:count>
+                    <gtr:id>Y2F0fEV1cm9wZWFuIEVudGVycHJpc2UgTmV0d29ya3xzdHJpbmc=</gtr:id>
+                    <gtr:name>European Enterprise Network</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>20</gtr:count>
+                    <gtr:id>Y2F0fE1pc3Npb25zfHN0cmluZw==</gtr:id>
+                    <gtr:name>Missions</gtr:name>
+                </gtr:facet>
+            </gtr:facets>
+            <gtr:sortOrder>A</gtr:sortOrder>
+        </gtr:facetGroup>
+        <gtr:facetGroup>
+            <gtr:name>Funder</gtr:name>
+            <gtr:facets>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>28594</gtr:count>
+                    <gtr:id>ZnVuZGVyfEVQU1JDfHN0cmluZw==</gtr:id>
+                    <gtr:name>EPSRC</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>21842</gtr:count>
+                    <gtr:id>ZnVuZGVyfElubm92YXRlIFVLfHN0cmluZw==</gtr:id>
+                    <gtr:name>INNOVATE UK</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>16378</gtr:count>
+                    <gtr:id>ZnVuZGVyfEJCU1JDfHN0cmluZw==</gtr:id>
+                    <gtr:name>BBSRC</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>11416</gtr:count>
+                    <gtr:id>ZnVuZGVyfE1SQ3xzdHJpbmc=</gtr:id>
+                    <gtr:name>MRC</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>10347</gtr:count>
+                    <gtr:id>ZnVuZGVyfEVTUkN8c3RyaW5n</gtr:id>
+                    <gtr:name>ESRC</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>9864</gtr:count>
+                    <gtr:id>ZnVuZGVyfE5FUkN8c3RyaW5n</gtr:id>
+                    <gtr:name>NERC</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>8242</gtr:count>
+                    <gtr:id>ZnVuZGVyfEFIUkN8c3RyaW5n</gtr:id>
+                    <gtr:name>AHRC</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>6351</gtr:count>
+                    <gtr:id>ZnVuZGVyfFNURkN8c3RyaW5n</gtr:id>
+                    <gtr:name>STFC</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>408</gtr:count>
+                    <gtr:id>ZnVuZGVyfE5DM1JzfHN0cmluZw==</gtr:id>
+                    <gtr:name>NC3RS</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>132</gtr:count>
+                    <gtr:id>ZnVuZGVyfFVLUkl8c3RyaW5n</gtr:id>
+                    <gtr:name>UKRI</gtr:name>
+                </gtr:facet>
+            </gtr:facets>
+            <gtr:sortOrder>A</gtr:sortOrder>
+        </gtr:facetGroup>
+        <gtr:facetGroup>
+            <gtr:name>Start Year</gtr:name>
+            <gtr:facets>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>1</gtr:count>
+                    <gtr:id>c3RhcnR8MTY0MDk5NTIwMDAwMF8xNjcyNTMxMTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2022</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>412</gtr:count>
+                    <gtr:id>c3RhcnR8MTYwOTQ1OTIwMDAwMF8xNjQwOTk1MTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2021</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>11523</gtr:count>
+                    <gtr:id>c3RhcnR8MTU3NzgzNjgwMDAwMF8xNjA5NDU5MTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2020</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>10873</gtr:count>
+                    <gtr:id>c3RhcnR8MTU0NjMwMDgwMDAwMF8xNTc3ODM2Nzk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2019</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>9545</gtr:count>
+                    <gtr:id>c3RhcnR8MTUxNDc2NDgwMDAwMF8xNTQ2MzAwNzk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2018</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>10690</gtr:count>
+                    <gtr:id>c3RhcnR8MTQ4MzIyODgwMDAwMF8xNTE0NzY0Nzk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2017</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>7587</gtr:count>
+                    <gtr:id>c3RhcnR8MTQ1MTYwNjQwMDAwMF8xNDgzMjI4Nzk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2016</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>8156</gtr:count>
+                    <gtr:id>c3RhcnR8MTQyMDA3MDQwMDAwMF8xNDUxNjA2Mzk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2015</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>6643</gtr:count>
+                    <gtr:id>c3RhcnR8MTM4ODUzNDQwMDAwMF8xNDIwMDcwMzk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2014</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>7060</gtr:count>
+                    <gtr:id>c3RhcnR8MTM1Njk5ODQwMDAwMF8xMzg4NTM0Mzk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2013</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>6151</gtr:count>
+                    <gtr:id>c3RhcnR8MTMyNTM3NjAwMDAwMF8xMzU2OTk4Mzk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2012</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5388</gtr:count>
+                    <gtr:id>c3RhcnR8MTI5Mzg0MDAwMDAwMF8xMzI1Mzc1OTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2011</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5969</gtr:count>
+                    <gtr:id>c3RhcnR8MTI2MjMwNDAwMDAwMF8xMjkzODM5OTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2010</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5553</gtr:count>
+                    <gtr:id>c3RhcnR8MTIzMDc2ODAwMDAwMF8xMjYyMzAzOTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2009</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5490</gtr:count>
+                    <gtr:id>c3RhcnR8MTE5OTE0NTYwMDAwMF8xMjMwNzY3OTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2008</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5412</gtr:count>
+                    <gtr:id>c3RhcnR8MTE2NzYwOTYwMDAwMF8xMTk5MTQ1NTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2007</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>5318</gtr:count>
+                    <gtr:id>c3RhcnR8MTEzNjA3MzYwMDAwMF8xMTY3NjA5NTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2006</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>647</gtr:count>
+                    <gtr:id>c3RhcnR8MTEwNDUzNzYwMDAwMF8xMTM2MDczNTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2005</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>322</gtr:count>
+                    <gtr:id>c3RhcnR8MTA3MjkxNTIwMDAwMF8xMTA0NTM3NTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2004</gtr:name>
+                </gtr:facet>
+                <gtr:facet>
+                    <gtr:applied>false</gtr:applied>
+                    <gtr:count>169</gtr:count>
+                    <gtr:id>c3RhcnR8MTA0MTM3OTIwMDAwMF8xMDcyOTE1MTk5MDU5fHJhbmdl</gtr:id>
+                    <gtr:name>2003</gtr:name>
+                </gtr:facet>
+            </gtr:facets>
+            <gtr:sortOrder>D</gtr:sortOrder>
+        </gtr:facetGroup>
+    </gtr:facetGroups>
+    <gtr:suggestions/>
+    <gtr:results>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/83D87776-5958-42AE-889D-B8AECF16B468">
+                    <gtr:id>83D87776-5958-42AE-889D-B8AECF16B468</gtr:id>
+                    <gtr:name>University of Leeds</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/BC7433A2-F634-4033-B30C-08930D43A8F7">
+                        <gtr:id>BC7433A2-F634-4033-B30C-08930D43A8F7</gtr:id>
+                        <gtr:firstName>Stuart</gtr:firstName>
+                        <gtr:otherNames>James</gtr:otherNames>
+                        <gtr:surname>Taberner</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=AH%2FV008536%2F1">
+                    <gtr:id>9C4B940B-CE66-4C3B-A1FC-F988C737FC19</gtr:id>
+                    <gtr:title>German Jewish Literary Fiction since 1990: Re-imagining German Jewish Identities
+                        Transnationally and Globally
+                    </gtr:title>
+                    <gtr:grantCategory>Fellowship</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2023-06-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/1291772D-DFCE-493A-AEE7-24F7EEAFE0E9">
+                            <gtr:id>1291772D-DFCE-493A-AEE7-24F7EEAFE0E9</gtr:id>
+                            <gtr:name>AHRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2022-01-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>242482</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/A8967420-49D3-4509-9912-25FB3EC75B74">
+                    <gtr:id>A8967420-49D3-4509-9912-25FB3EC75B74</gtr:id>
+                    <gtr:name>University of Sussex</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/479D165C-FC3D-4F4D-B179-2FB226C69CED">
+                        <gtr:id>479D165C-FC3D-4F4D-B179-2FB226C69CED</gtr:id>
+                        <gtr:firstName>Ben</gtr:firstName>
+                        <gtr:otherNames>John</gtr:otherNames>
+                        <gtr:surname>Highmore</gtr:surname>
+                        <gtr:orcidId>0000-0002-7865-5184</gtr:orcidId>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=AH%2FV001841%2F1">
+                    <gtr:id>27CC92E8-5454-40BB-A7BE-594F12497494</gtr:id>
+                    <gtr:title>Playgrounds: A Material Cultural Study of Post-1945 Playgrounds</gtr:title>
+                    <gtr:grantCategory>Fellowship</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2023-04-03</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/1291772D-DFCE-493A-AEE7-24F7EEAFE0E9">
+                            <gtr:id>1291772D-DFCE-493A-AEE7-24F7EEAFE0E9</gtr:id>
+                            <gtr:name>AHRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-04</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>184945</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/03D8AFBB-3EA5-4885-B036-BD4F9F4F9849">
+                    <gtr:id>03D8AFBB-3EA5-4885-B036-BD4F9F4F9849</gtr:id>
+                    <gtr:name>University of Sheffield</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/FA6CBBE0-0A0E-49C8-B49A-0B52B58F23BC">
+                        <gtr:id>FA6CBBE0-0A0E-49C8-B49A-0B52B58F23BC</gtr:id>
+                        <gtr:firstName>Neil</gtr:firstName>
+                        <gtr:surname>Hyatt</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=EP%2FV027522%2F1">
+                    <gtr:id>AC83DB60-D4A2-4577-A950-2D1887960D9B</gtr:id>
+                    <gtr:title>Development of technology to reduce environmental problems via innovative water
+                        purification agents
+                    </gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2023-03-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/798CB33D-C79E-4578-83F2-72606407192C">
+                            <gtr:id>798CB33D-C79E-4578-83F2-72606407192C</gtr:id>
+                            <gtr:name>EPSRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>210431</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/5E2B04DD-4A03-45ED-9892-61C5CCB8AC68">
+                    <gtr:id>5E2B04DD-4A03-45ED-9892-61C5CCB8AC68</gtr:id>
+                    <gtr:name>Newcastle University</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles/>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NC%2FV001973%2F1">
+                    <gtr:id>F0DEAE7C-08A5-4E50-B8CE-A1D1EDB0DB94</gtr:id>
+                    <gtr:title>Investigating biomechanical responses in healthy and diseases ageing cartilage - a tissue
+                        engineering approach
+                    </gtr:title>
+                    <gtr:grantCategory>Training Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-09-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/66BB3CDB-84B4-41B5-AB21-FEC312E91CC8">
+                            <gtr:id>66BB3CDB-84B4-41B5-AB21-FEC312E91CC8</gtr:id>
+                            <gtr:name>NC3Rs</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>90000</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/818CD6C9-61EE-41F2-9F37-0C7A8F43E25D">
+                    <gtr:id>818CD6C9-61EE-41F2-9F37-0C7A8F43E25D</gtr:id>
+                    <gtr:name>University of Birmingham</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/B21FD700-2E0C-4253-877A-E9055AC2A7DB">
+                        <gtr:id>B21FD700-2E0C-4253-877A-E9055AC2A7DB</gtr:id>
+                        <gtr:firstName>David</gtr:firstName>
+                        <gtr:surname>Evans</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=ST%2FV001043%2F1">
+                    <gtr:id>753CC8DE-C5AD-4B60-801B-C7C2A939DCE3</gtr:id>
+                    <gtr:title>Birmingham Nuclear Physics Consolidated Grant 2020</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-09-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/D7F4F462-0518-4784-908A-D12633C139B3">
+                            <gtr:id>D7F4F462-0518-4784-908A-D12633C139B3</gtr:id>
+                            <gtr:name>STFC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>1732852</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/FDC92628-BF2E-4EEB-A9EB-2FDED0999959">
+                    <gtr:id>FDC92628-BF2E-4EEB-A9EB-2FDED0999959</gtr:id>
+                    <gtr:name>University of Derby</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/F68A10FC-3DBC-44DD-A7D9-1959751F7055">
+                        <gtr:id>F68A10FC-3DBC-44DD-A7D9-1959751F7055</gtr:id>
+                        <gtr:firstName>Lee</gtr:firstName>
+                        <gtr:otherNames>Stuart</gtr:otherNames>
+                        <gtr:surname>Barnby</gtr:surname>
+                        <gtr:orcidId>0000-0001-7357-9904</gtr:orcidId>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=ST%2FV001094%2F1">
+                    <gtr:id>3A0548FB-FD7A-42A6-AEFB-6A5DEDA49E07</gtr:id>
+                    <gtr:title>Consolidated grant</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-09-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/D7F4F462-0518-4784-908A-D12633C139B3">
+                            <gtr:id>D7F4F462-0518-4784-908A-D12633C139B3</gtr:id>
+                            <gtr:name>STFC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>95974</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/2DB7ED73-8E89-457A-A395-FAC12F929C1A">
+                    <gtr:id>2DB7ED73-8E89-457A-A395-FAC12F929C1A</gtr:id>
+                    <gtr:name>University of Edinburgh</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/EF16BC5E-635F-4830-AD19-56F2BAFB776D">
+                        <gtr:id>EF16BC5E-635F-4830-AD19-56F2BAFB776D</gtr:id>
+                        <gtr:firstName>Philip J</gtr:firstName>
+                        <gtr:surname>Woods</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=ST%2FV001051%2F1">
+                    <gtr:id>CEFFBDE9-2BE5-475F-9AD4-B8A6F612F79D</gtr:id>
+                    <gtr:title>Edinburgh Nuclear Physics Group Consolidated Grant Proposal</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-09-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/D7F4F462-0518-4784-908A-D12633C139B3">
+                            <gtr:id>D7F4F462-0518-4784-908A-D12633C139B3</gtr:id>
+                            <gtr:name>STFC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>1273728</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/318B5D98-4CB4-4B10-A876-08FC93071A56">
+                    <gtr:id>318B5D98-4CB4-4B10-A876-08FC93071A56</gtr:id>
+                    <gtr:name>King's College London</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles/>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NC%2FV001469%2F1">
+                    <gtr:id>CD8C5B73-753E-4CF4-9C4A-F87EF3BFE7A1</gtr:id>
+                    <gtr:title>Combining a fully synthetic hydrogel with human intestinal organoids to model
+                        pathological matrix remodelling in Inflammatory Bowel Disease (IBD)
+                    </gtr:title>
+                    <gtr:grantCategory>Training Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-09-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/66BB3CDB-84B4-41B5-AB21-FEC312E91CC8">
+                            <gtr:id>66BB3CDB-84B4-41B5-AB21-FEC312E91CC8</gtr:id>
+                            <gtr:name>NC3Rs</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>90000</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/9CC338AF-A8AB-4D3F-9740-4401535C2FD6">
+                    <gtr:id>9CC338AF-A8AB-4D3F-9740-4401535C2FD6</gtr:id>
+                    <gtr:name>The Rosalind Franklin Institute</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles/>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=EP%2FV521899%2F1">
+                    <gtr:id>4C129A19-8374-4314-90F3-604138552887</gtr:id>
+                    <gtr:title>DTP 2021 The Rosalind Franklin Institute</gtr:title>
+                    <gtr:grantCategory>Training Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2025-09-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/798CB33D-C79E-4578-83F2-72606407192C">
+                            <gtr:id>798CB33D-C79E-4578-83F2-72606407192C</gtr:id>
+                            <gtr:name>EPSRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>1032639</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/5904176C-7486-4E2B-959A-94C29ADE4D96">
+                    <gtr:id>5904176C-7486-4E2B-959A-94C29ADE4D96</gtr:id>
+                    <gtr:name>University of Brighton</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/B5A62B5C-E30C-41BE-A249-F3088DCDBD9F">
+                        <gtr:id>B5A62B5C-E30C-41BE-A249-F3088DCDBD9F</gtr:id>
+                        <gtr:firstName>Alison</gtr:firstName>
+                        <gtr:surname>Bruce</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=ST%2FV001078%2F1">
+                    <gtr:id>4FBF3B76-DBCD-4423-ADBB-ABAE02E825A2</gtr:id>
+                    <gtr:title>Advancing Nuclear Science via Theory and Experiment</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-09-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/D7F4F462-0518-4784-908A-D12633C139B3">
+                            <gtr:id>D7F4F462-0518-4784-908A-D12633C139B3</gtr:id>
+                            <gtr:name>STFC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-10-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>158838</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/055EA8B7-2C66-4FF5-96DD-63FA3AA7D0B7">
+                    <gtr:id>055EA8B7-2C66-4FF5-96DD-63FA3AA7D0B7</gtr:id>
+                    <gtr:name>London Sch of Hygiene and Trop Medicine</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles/>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=studentship-2444673">
+                    <gtr:id>143960A3-B4DD-4462-B81B-77B6D600141E</gtr:id>
+                    <gtr:title>Matched cohort methods in the analysis of e-Health data</gtr:title>
+                    <gtr:grantCategory>Studentship</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2025-03-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/C008C651-F5B0-4859-A334-5F574AB6B57C">
+                            <gtr:id>C008C651-F5B0-4859-A334-5F574AB6B57C</gtr:id>
+                            <gtr:name>MRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-09-26</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>0</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/ACD5F1CF-266C-4CDE-A399-43DC93429CF9">
+                    <gtr:id>ACD5F1CF-266C-4CDE-A399-43DC93429CF9</gtr:id>
+                    <gtr:name>Rothamsted Research</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/87E85B73-7641-4FD2-BF7F-3BD837D5CC5C">
+                        <gtr:id>87E85B73-7641-4FD2-BF7F-3BD837D5CC5C</gtr:id>
+                        <gtr:firstName>Johnathan</gtr:firstName>
+                        <gtr:otherNames>Andrew</gtr:otherNames>
+                        <gtr:surname>Napier</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=BB%2FV003631%2F1">
+                    <gtr:id>182D5F5E-22C4-42A7-8BFD-442F138071D2</gtr:id>
+                    <gtr:title>Derisking the commercial opportunities associated with novel omega-3 foodstuffs
+                    </gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2023-08-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/2512EF1C-401B-4222-9869-A770D4C5FAC7">
+                            <gtr:id>2512EF1C-401B-4222-9869-A770D4C5FAC7</gtr:id>
+                            <gtr:name>BBSRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-09-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>645528</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/4A348A76-B2D0-4DDD-804A-CE735A6D3798">
+                    <gtr:id>4A348A76-B2D0-4DDD-804A-CE735A6D3798</gtr:id>
+                    <gtr:name>University of Bristol</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles/>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NC%2FV001728%2F1">
+                    <gtr:id>BFAEAB90-6416-4F8B-B1B8-E5ADA83B441B</gtr:id>
+                    <gtr:title>A novel Drosophila model of chronic inflammatory lung disease to explore airway damage,
+                        inflammation and infection in vivo
+                    </gtr:title>
+                    <gtr:grantCategory>Training Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-08-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/66BB3CDB-84B4-41B5-AB21-FEC312E91CC8">
+                            <gtr:id>66BB3CDB-84B4-41B5-AB21-FEC312E91CC8</gtr:id>
+                            <gtr:name>NC3Rs</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-09-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>90000</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/EF390CF0-ECD3-47D8-B9A8-7602AF319BEE">
+                    <gtr:id>EF390CF0-ECD3-47D8-B9A8-7602AF319BEE</gtr:id>
+                    <gtr:name>Northumbria University</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/6B5A9E39-DB82-40AA-B3C5-D8E446F28609">
+                        <gtr:id>6B5A9E39-DB82-40AA-B3C5-D8E446F28609</gtr:id>
+                        <gtr:firstName>Johnny</gtr:firstName>
+                        <gtr:surname>Walker</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=AH%2FV007076%2F1">
+                    <gtr:id>0A0123AE-C7B8-4E07-A602-C739B3D5447A</gtr:id>
+                    <gtr:title>Raising Hell: British Horror Cinema in the 1980s and 1990s</gtr:title>
+                    <gtr:grantCategory>Fellowship</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2023-06-30</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/1291772D-DFCE-493A-AEE7-24F7EEAFE0E9">
+                            <gtr:id>1291772D-DFCE-493A-AEE7-24F7EEAFE0E9</gtr:id>
+                            <gtr:name>AHRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-09-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>141706</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/B6FB652A-60C3-48DD-9A33-075D1F759B48">
+                    <gtr:id>B6FB652A-60C3-48DD-9A33-075D1F759B48</gtr:id>
+                    <gtr:name>University of Warwick</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/3735F8D1-60D9-46B9-8CE0-A665F094CCFA">
+                        <gtr:id>3735F8D1-60D9-46B9-8CE0-A665F094CCFA</gtr:id>
+                        <gtr:firstName>Alice</gtr:firstName>
+                        <gtr:surname>Mason</gtr:surname>
+                        <gtr:orcidId>0000-0003-2004-0387</gtr:orcidId>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=ES%2FT016639%2F1">
+                    <gtr:id>CBF7EB13-2839-44FC-8A91-A1791E889E08</gtr:id>
+                    <gtr:title>Constructing the decision environment from memory: how overweighting extreme events
+                        biases choice
+                    </gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-01-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/924BE15C-91F2-4AAD-941A-3F338324B6AE">
+                            <gtr:id>924BE15C-91F2-4AAD-941A-3F338324B6AE</gtr:id>
+                            <gtr:name>ESRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-07-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>236092</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/83D87776-5958-42AE-889D-B8AECF16B468">
+                    <gtr:id>83D87776-5958-42AE-889D-B8AECF16B468</gtr:id>
+                    <gtr:name>University of Leeds</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/3C141A6D-009D-43EC-B51C-E85371A38319">
+                        <gtr:id>3C141A6D-009D-43EC-B51C-E85371A38319</gtr:id>
+                        <gtr:firstName>Andrew</gtr:firstName>
+                        <gtr:otherNames>David</gtr:otherNames>
+                        <gtr:surname>Brooke-Taylor</gtr:surname>
+                        <gtr:orcidId>0000-0003-3734-0933</gtr:orcidId>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=EP%2FV050036%2F1">
+                    <gtr:id>41318C67-39E0-4B66-814A-278CF7F45EA5</gtr:id>
+                    <gtr:title>Categorifying Turbulence in Borel Reducibility</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2022-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/798CB33D-C79E-4578-83F2-72606407192C">
+                            <gtr:id>798CB33D-C79E-4578-83F2-72606407192C</gtr:id>
+                            <gtr:name>EPSRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>58356</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/333FAC7F-030F-4A9C-87FD-78DB66107E58">
+                    <gtr:id>333FAC7F-030F-4A9C-87FD-78DB66107E58</gtr:id>
+                    <gtr:name>National Oceanography Centre (WEF011019)</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/F454A976-78F9-4611-9C57-68424492F1B9">
+                        <gtr:id>F454A976-78F9-4611-9C57-68424492F1B9</gtr:id>
+                        <gtr:firstName>Daniel</gtr:firstName>
+                        <gtr:otherNames>Oliver</gtr:otherNames>
+                        <gtr:surname>Jones</gtr:surname>
+                        <gtr:orcidId>0000-0001-5218-1649</gtr:orcidId>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NE%2FT003537%2F1">
+                    <gtr:id>BFCA4B12-34C4-4A97-8131-5EC6EDFCDD57</gtr:id>
+                    <gtr:title>Seabed Mining And Resilience To EXperimental impact</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2025-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/8A03ED41-E67D-4F4A-B5DD-AAFB272B6471">
+                            <gtr:id>8A03ED41-E67D-4F4A-B5DD-AAFB272B6471</gtr:id>
+                            <gtr:name>NERC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>1575601</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/E5A82D2C-5AD4-488A-ACFF-566345A5D6DA">
+                    <gtr:id>E5A82D2C-5AD4-488A-ACFF-566345A5D6DA</gtr:id>
+                    <gtr:name>Heriot-Watt University</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/E4DBF022-F8D6-4727-9FCD-A777EF7A5D25">
+                        <gtr:id>E4DBF022-F8D6-4727-9FCD-A777EF7A5D25</gtr:id>
+                        <gtr:firstName>Andrew</gtr:firstName>
+                        <gtr:surname>Sweetman</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NE%2FT003278%2F1">
+                    <gtr:id>83F414D3-5BA7-45B3-8BC5-4D1D829A47E8</gtr:id>
+                    <gtr:title>Seabed Mining And Resilience To EXperimental impact</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2025-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/8A03ED41-E67D-4F4A-B5DD-AAFB272B6471">
+                            <gtr:id>8A03ED41-E67D-4F4A-B5DD-AAFB272B6471</gtr:id>
+                            <gtr:name>NERC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>160423</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/1ED25A21-FD91-4EC2-A06F-724F9F2CDC3D">
+                    <gtr:id>1ED25A21-FD91-4EC2-A06F-724F9F2CDC3D</gtr:id>
+                    <gtr:name>Scottish Association For Marine Science</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/A548DD4F-FCFD-4EA3-872B-0DFF6405E2C3">
+                        <gtr:id>A548DD4F-FCFD-4EA3-872B-0DFF6405E2C3</gtr:id>
+                        <gtr:firstName>Andrew</gtr:firstName>
+                        <gtr:otherNames>Christopher</gtr:otherNames>
+                        <gtr:surname>Dale</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NE%2FT002867%2F1">
+                    <gtr:id>C5A15A64-7083-4ABF-B6BB-B11A4C125532</gtr:id>
+                    <gtr:title>Seabed Mining And Resilience To EXperimental impact</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2025-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/8A03ED41-E67D-4F4A-B5DD-AAFB272B6471">
+                            <gtr:id>8A03ED41-E67D-4F4A-B5DD-AAFB272B6471</gtr:id>
+                            <gtr:name>NERC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>218844</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/30A429E3-83B7-4E41-99C0-14A144F07DFE">
+                    <gtr:id>30A429E3-83B7-4E41-99C0-14A144F07DFE</gtr:id>
+                    <gtr:name>University of Southampton</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/CDA6B89A-2D85-4CC2-9700-104285F96E06">
+                        <gtr:id>CDA6B89A-2D85-4CC2-9700-104285F96E06</gtr:id>
+                        <gtr:firstName>Jonathan</gtr:firstName>
+                        <gtr:otherNames>Timothy</gtr:otherNames>
+                        <gtr:surname>Copley</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NE%2FT003081%2F1">
+                    <gtr:id>DE268E4E-A185-4741-96B1-0485DFB8B070</gtr:id>
+                    <gtr:title>Seabed Mining And Resilience To EXperimental impact</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2025-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/8A03ED41-E67D-4F4A-B5DD-AAFB272B6471">
+                            <gtr:id>8A03ED41-E67D-4F4A-B5DD-AAFB272B6471</gtr:id>
+                            <gtr:name>NERC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>45445</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/8319F78A-DCBD-49F6-BE00-78E1CD75CDA9">
+                    <gtr:id>8319F78A-DCBD-49F6-BE00-78E1CD75CDA9</gtr:id>
+                    <gtr:name>University of York</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/1903CEAC-28F8-4B03-9FAD-4291B361FCB7">
+                        <gtr:id>1903CEAC-28F8-4B03-9FAD-4291B361FCB7</gtr:id>
+                        <gtr:firstName>Sylvia</gtr:firstName>
+                        <gtr:surname>Toet</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NE%2FV000624%2F1">
+                    <gtr:id>8DA9776F-0419-43EB-88A5-3C14AC484BBB</gtr:id>
+                    <gtr:title>Diurnal Variation in Soil Nitrous oxide Emissions (DIVINE): drivers and mechanisms
+                    </gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/8A03ED41-E67D-4F4A-B5DD-AAFB272B6471">
+                            <gtr:id>8A03ED41-E67D-4F4A-B5DD-AAFB272B6471</gtr:id>
+                            <gtr:name>NERC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>321256</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/2431A6E2-13D5-40AB-A58A-AC75E6A3654E">
+                    <gtr:id>2431A6E2-13D5-40AB-A58A-AC75E6A3654E</gtr:id>
+                    <gtr:name>UK Ctr for Ecology &amp; Hydrology fr 011219</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/A87BAC83-BEAA-4897-8B85-E722EE05F6CD">
+                        <gtr:id>A87BAC83-BEAA-4897-8B85-E722EE05F6CD</gtr:id>
+                        <gtr:firstName>Niall</gtr:firstName>
+                        <gtr:otherNames>Patrick</gtr:otherNames>
+                        <gtr:surname>McNamara</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NE%2FV000837%2F1">
+                    <gtr:id>ABBCD756-78F1-4507-9992-6EF563406F47</gtr:id>
+                    <gtr:title>Diurnal Variation in Soil Nitrous oxide Emissions (DIVINE): drivers and mechanisms
+                    </gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/8A03ED41-E67D-4F4A-B5DD-AAFB272B6471">
+                            <gtr:id>8A03ED41-E67D-4F4A-B5DD-AAFB272B6471</gtr:id>
+                            <gtr:name>NERC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>411532</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/59EE6C94-CB2C-4AB3-9A0B-EAAF5A6550CD">
+                    <gtr:id>59EE6C94-CB2C-4AB3-9A0B-EAAF5A6550CD</gtr:id>
+                    <gtr:name>The Pirbright Institute</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/6BB0D179-D25D-4B95-893D-DAC2BDCD2E47">
+                        <gtr:id>6BB0D179-D25D-4B95-893D-DAC2BDCD2E47</gtr:id>
+                        <gtr:firstName>Shahriar</gtr:firstName>
+                        <gtr:surname>Behboudi</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=BB%2FT020954%2F1">
+                    <gtr:id>3C4EDD8A-C552-4AA1-ACD0-EA6DABBC4D4D</gtr:id>
+                    <gtr:title>A novel platform for producing cell-free third generation Marek's disease virus vaccine
+                    </gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2024-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/2512EF1C-401B-4222-9869-A770D4C5FAC7">
+                            <gtr:id>2512EF1C-401B-4222-9869-A770D4C5FAC7</gtr:id>
+                            <gtr:name>BBSRC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>426064</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/7801F008-7C77-45E7-90E9-4345B47D138E">
+                    <gtr:id>7801F008-7C77-45E7-90E9-4345B47D138E</gtr:id>
+                    <gtr:name>University of Plymouth</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/2E9A0E62-6226-40B9-A540-3697D8D66640">
+                        <gtr:id>2E9A0E62-6226-40B9-A540-3697D8D66640</gtr:id>
+                        <gtr:firstName>Kerry</gtr:firstName>
+                        <gtr:otherNames>Louise</gtr:otherNames>
+                        <gtr:surname>Howell</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NE%2FT00293X%2F1">
+                    <gtr:id>E03777D9-BFC1-46A7-AAE5-2EF0CE154E54</gtr:id>
+                    <gtr:title>Seabed Mining And Resilience To EXperimental impact</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2025-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/8A03ED41-E67D-4F4A-B5DD-AAFB272B6471">
+                            <gtr:id>8A03ED41-E67D-4F4A-B5DD-AAFB272B6471</gtr:id>
+                            <gtr:name>NERC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>112178</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+        <gtr:projectOverview>
+            <gtr:projectComposition>
+                <gtr:leadResearchOrganisation
+                        url="https://gtr.ukri.org:443/organisation/B2F6103D-47D2-486A-8F7C-C62362BAACD9">
+                    <gtr:id>B2F6103D-47D2-486A-8F7C-C62362BAACD9</gtr:id>
+                    <gtr:name>The Natural History Museum</gtr:name>
+                </gtr:leadResearchOrganisation>
+                <gtr:personRoles>
+                    <gtr:personRole url="https://gtr.ukri.org:443/person/8F10B52B-DFDF-49DB-8B4A-7F71792FE606">
+                        <gtr:id>8F10B52B-DFDF-49DB-8B4A-7F71792FE606</gtr:id>
+                        <gtr:firstName>Adrian</gtr:firstName>
+                        <gtr:surname>Glover</gtr:surname>
+                        <gtr:roles>
+                            <gtr:role>
+                                <gtr:name>PRINCIPAL_INVESTIGATOR</gtr:name>
+                            </gtr:role>
+                        </gtr:roles>
+                    </gtr:personRole>
+                </gtr:personRoles>
+                <gtr:project url="https://gtr.ukri.org:443/projects?ref=NE%2FT002913%2F1">
+                    <gtr:id>34922A57-0522-4433-B8CB-A486075115DA</gtr:id>
+                    <gtr:title>Seabed Mining And Resilience To EXperimental impact</gtr:title>
+                    <gtr:grantCategory>Research Grant</gtr:grantCategory>
+                    <gtr:fund>
+                        <gtr:end>2025-05-31</gtr:end>
+                        <gtr:funder url="https://gtr.ukri.org:443/organisation/8A03ED41-E67D-4F4A-B5DD-AAFB272B6471">
+                            <gtr:id>8A03ED41-E67D-4F4A-B5DD-AAFB272B6471</gtr:id>
+                            <gtr:name>NERC</gtr:name>
+                        </gtr:funder>
+                        <gtr:start>2021-06-01</gtr:start>
+                        <gtr:type>INCOME_ACTUAL</gtr:type>
+                        <gtr:valuePounds>713811</gtr:valuePounds>
+                    </gtr:fund>
+                    <gtr:healthCategories/>
+                    <gtr:researchActivities/>
+                    <gtr:researchSubjects/>
+                    <gtr:researchTopics/>
+                    <gtr:rcukProgrammes/>
+                </gtr:project>
+            </gtr:projectComposition>
+        </gtr:projectOverview>
+    </gtr:results>
+</gtr:searchResult>
