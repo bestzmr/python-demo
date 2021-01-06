@@ -808,6 +808,91 @@ call now():
 2015-3-25
 ```
 
+把`@log`放到`now()`函数的定义处，相当于执行了语句：
+
+```python
+now = log(now)
+```
+
+由于`log()`是一个decorator，返回一个函数，所以，原来的`now()`函数仍然存在，只是现在同名的`now`变量指向了新的函数，于是调用`now()`将执行新函数，即在`log()`函数中返回的`wrapper()`函数。
+
+`wrapper()`函数的参数定义是`(*args, **kw)`，因此，`wrapper()`函数可以接受任意参数的调用。在`wrapper()`函数内，首先打印日志，再紧接着调用原始函数。
+
+如果decorator本身需要传入参数，那就需要编写一个返回decorator的高阶函数，写出来会更复杂。比如，要自定义log的文本：
+
+```python
+def log(text):
+    def decorator(func):
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+```
+
+这个3层嵌套的decorator用法如下：
+
+```python
+@log('execute')
+def now():
+    print('2015-3-25')
+```
+
+执行结果如下：
+
+```python
+>>> now()
+execute now():
+2015-3-25
+```
+
+和两层嵌套的decorator相比，3层嵌套的效果是这样的：
+
+```python
+>>> now = log('execute')(now)
+```
+
+我们来剖析上面的语句，首先执行`log('execute')`，返回的是`decorator`函数，再调用返回的函数，参数是`now`函数，返回值最终是`wrapper`函数。
+
+以上两种decorator的定义都没有问题，但还差最后一步。因为我们讲了函数也是对象，它有`__name__`等属性，但你去看经过decorator装饰之后的函数，它们的`__name__`已经从原来的`'now'`变成了`'wrapper'`：
+
+```python
+>>> now.__name__
+'wrapper'
+```
+
+因为返回的那个`wrapper()`函数名字就是`'wrapper'`，所以，需要把原始函数的`__name__`等属性复制到`wrapper()`函数中，否则，有些依赖函数签名的代码执行就会出错。
+
+不需要编写`wrapper.__name__ = func.__name__`这样的代码，Python内置的`functools.wraps`就是干这个事的，所以，一个完整的decorator的写法如下：
+
+```python
+import functools
+
+def log(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+```
+
+或者针对带参数的decorator：
+
+```python
+import functools
+
+def log(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+```
+
+`import functools`是导入`functools`模块。模块的概念稍候讲解。现在，只需记住在定义`wrapper()`的前面加上`@functools.wraps(func)`即可。
+
 ### 偏函数
 
 当函数的参数个数太多，需要简化时，使用`functools.partial`可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。
@@ -1940,6 +2025,47 @@ def dict2student(d):
 
 ### 多线程
 
+Python的标准库提供了两个模块：`_thread`和`threading`，`_thread`是低级模块，`threading`是高级模块，对`_thread`进行了封装。绝大多数情况下，我们只需要使用`threading`这个高级模块。
+
+启动一个线程就是把一个函数传入并创建`Thread`实例，然后调用`start()`开始执行：
+
+```python
+import time, threading
+
+# 新线程执行的代码:
+def loop():
+    print('thread %s is running...' % threading.current_thread().name)
+    n = 0
+    while n < 5:
+        n = n + 1
+        print('thread %s >>> %s' % (threading.current_thread().name, n))
+        time.sleep(1)
+    print('thread %s ended.' % threading.current_thread().name)
+
+print('thread %s is running...' % threading.current_thread().name)
+t = threading.Thread(target=loop, name='LoopThread')
+t.start()
+t.join()  
+# t.join()方法只会使主线程(或者说调用t.join()的线程)进入等待池并等待t线程执行完毕后才会被唤醒。并不影响同一时刻处在运行状态的其他线程。
+print('thread %s ended.' % threading.current_thread().name)
+```
+
+执行结果如下：
+
+```python
+thread MainThread is running...
+thread LoopThread is running...
+thread LoopThread >>> 1
+thread LoopThread >>> 2
+thread LoopThread >>> 3
+thread LoopThread >>> 4
+thread LoopThread >>> 5
+thread LoopThread ended.
+thread MainThread ended.
+```
+
+由于任何进程默认就会启动一个线程，我们把该线程称为主线程，主线程又可以启动新的线程，Python的`threading`模块有个`current_thread()`函数，它永远返回当前线程的实例。主线程实例的名字叫`MainThread`，子线程的名字在创建时指定，我们用`LoopThread`命名子线程。名字仅仅在打印时用来显示，完全没有其他意义，如果不起名字Python就自动给线程命名为`Thread-1`，`Thread-2`……
+
 ### ThreadLocal
 
 ### 进程 vs. 线程
@@ -2193,6 +2319,253 @@ leave A
 　　如果是继承链里之后的类便会忽略继承链汇总本身和传入类之间的类；
 
 　　比如将childA()中的super改为：`super(childC, self).__init__()`，程序就会无限递归下去。
+
+## 专题：configparser配置解析器的使用
+
+### 简介
+
+python2下该模块名为`ConfigParser`，到3才改为`configparser`,可以看官方`ConfigParser`模块的说明
+
+python3中`configparser`模块的使用，`configparser`模块是用来解析`ini`配置文件的解析器
+
+ni文件结构需要注意一下几点：
+
+- 键值对可用=或者:进行分隔
+- section的名字是区分大小写的,而key的名字是不区分大小写的
+- 键值对中头部和尾部的空白符会被去掉
+- 值可以为多行
+- 配置文件可以包含注释，注释以#或者;为前缀
+
+注意：`configparser`有`default_section`的概念,默认为`[DEFAULT]`节,也就是之后的所有的`section`都有该默认`section`中的键值对,详情参见`configparser`源码的`__init__()`方法
+
+### 基本使用
+
+我们可以使用如下代码来创建ini文件：
+
+```python
+>>> import configparser
+>>> config = configparser.ConfigParser()
+>>> config['DEFAULT'] = {'ServerAliveInterval': '45',
+...                      'Compression': 'yes',
+...                      'CompressionLevel': '9'}
+>>> config['bitbucket.org'] = {}
+>>> config['bitbucket.org']['User'] = 'hg'
+>>> config['topsecret.server.com'] = {}
+>>> topsecret = config['topsecret.server.com']
+>>> topsecret['Port'] = '50022'     # mutates the parser
+>>> topsecret['ForwardX11'] = 'no'  # same here
+>>> config['DEFAULT']['ForwardX11'] = 'yes'
+>>> with open('example.ini', 'w') as configfile:
+...   config.write(configfile)
+```
+
+创建如下ini文件：
+`configparser`模块主要使用`ConfigParser`类来解析ini文件
+
+```python
+[DEFAULT]
+ServerAliveInterval = 45
+Compression = yes
+CompressionLevel = 9
+ForwardX11 = yes
+[bitbucket.org]
+User = hg
+[topsecret.server.com]
+Port = 50022
+ForwardX11 = no
+```
+
+然后我们再读取该ini文件：
+
+```python
+>>> import configparser
+>>> config = configparser.ConfigParser()
+>>> config.sections()
+[]
+>>> config.read('example.ini')
+['example.ini']
+>>> config.sections()
+['bitbucket.org', 'topsecret.server.com']
+>>> 'bitbucket.org' in config
+True
+>>> 'bytebong.com' in config
+False
+>>> config['bitbucket.org']['User']
+'hg'
+>>> config['DEFAULT']['Compression']
+'yes'
+>>> topsecret = config['topsecret.server.com']
+>>> topsecret['ForwardX11']
+'no'
+>>> topsecret['Port']
+'50022'
+>>> for key in config['bitbucket.org']: print(key)
+...
+user
+compressionlevel
+serveraliveinterval
+compression
+forwardx11
+>>> config['bitbucket.org']['ForwardX11']
+'yes'
+```
+
+ 
+
+除了可以使用列表的方式获取值，也可以通过section级别的get()方法获取，同时该函数可以指定默认值
+
+```python
+>>> topsecret.get('Port')
+'50022'
+>>> topsecret.get('CompressionLevel')
+'9'
+>>> topsecret.get('Cipher', '3des-cbc')
+'3des-cbc'
+```
+
+ 
+
+而解析器级别的get()函数的默认值是通过fallback参数指定的：
+
+```python
+>>> config.get('bitbucket.org', 'monster',
+...            fallback='No such things as monsters')
+'No such things as monsters'
+```
+
+ 
+
+需要注意的是，无论是通过列表方式获取值，还是通过get()方法获取值，获取到的数据都字符串类型，如果想要获取指定类型的数据，可以使用如下的几个方法:
+
+- getint()
+- getfloat()
+- getboolean()
+
+同时需要注意`getboolean()`方法能判断`True/False`的值有： `‘yes’/‘no’, ‘on’/‘off’, ‘true’/‘false’ 和 ‘1’/‘0’`
+
+### Interpolation
+
+创建`ConfigParser()`类的时候可以指定`interpolation`参数，如果将`interpolation`设置为`BasicInterpolation()`，则配置文件中的%(key)s结构会被解析，如，比如`example.ini`文件内容如下：
+
+```python
+[Paths]
+home_dir: /Users
+my_dir: %(home_dir)s/lumberjack
+my_pictures: %(my_dir)s/Pictures
+```
+
+ 
+
+```python
+>>> import configparser
+>>> config = configparser.ConfigParser(interpolation=configparser.BasicInterpolation())
+>>> config.read(r'F:\coding\python\example.ini')
+['F:\\coding\\python\\example.ini']
+>>> config['Paths']['my_dir']
+'/Users/lumberjack'
+```
+
+ 
+
+可以看到`%(home_dir)s`被解析成了`/Users`，说白了，相当于配置文件中的变量
+
+创建`ConfigParser()`类的时候如果没有指定`interpolation`参数，则不会解析%(key)s，只会返回字符串而已
+
+```python
+>>> config['Paths']['my_dir']
+'%(home_dir)s/lumberjack'
+```
+
+ 
+
+当然Interpolation还有更高级的使用方法，创建`ConfigParser()`类的时候指定interpolation参数为`ExtendedInterpolation()`，那么解析器会解析`${section:key}`结构，那么上面的ini文件应该写成如下的格式:
+
+```python
+[Paths]
+home_dir: /Users
+my_dir: ${home_dir}/lumberjack
+my_pictures: ${my_dir}/Pictures
+```
+
+ 
+
+ 
+
+并且`ExtendedInterpolation()`也能解析更复杂的，像下面这样的ini文件:
+
+```python
+[Common]
+home_dir: /Users
+library_dir: /Library
+system_dir: /System
+macports_dir: /opt/local
+[Frameworks]
+Python: 3.2
+path: ${Common:system_dir}/Library/Frameworks/
+[Arthur]
+nickname: Two Sheds
+last_name: Jackson
+my_dir: ${Common:home_dir}/twosheds
+my_pictures: ${my_dir}/Pictures
+python_dir: ${Frameworks:path}/Python/Versions/${Frameworks:Python}
+```
+
+### ConfigParser
+
+ConfigParser对象的其他方法，如：
+
+- add_section(section)
+- has_section(section)
+- options(section)
+- has_option(section, option)
+- remove_option(section, option)
+- remove_section(section)
+
+### 扩展
+
+RawConfigParser是最基础的ini文件读取类，ConfigParser、SafeConfigParser支持对Interpolation的解析。
+
+## 专题：日志logging的使用
+
+　loggin库采用了模块化的设计，提供了许多组件：记录器(logger),处理器(handler),过滤器(filter),格式化器(formatter)
+
+* Logger 暴露了应用程序代码能直接使用的接口。
+
+* Handler将（记录器产生的）日志记录发送至合适的目的地。
+
+* Filter提供了更好的粒度控制，它可以决定输出哪些日志记录。
+
+* Formatter 指明了最终输出中日志记录的布局
+
+logging.StreamHandler() -> 控制台输出
+logging.FileHandler(filename[,mode])  -> 文件输出
+logging.handlers.RotatingFileHandler( filename[, mode[, maxBytes[, backupCount]]]) -> 按照大小自动分割日志文件，一旦达到指定的大小重新生成文件
+maxBytes用于指定日志文件的最大文件大小。如果maxBytes为0，意味着日志文件可以无限大，这时上面描述的重命名过程就不会发生。
+backupCount用于指定保留的备份文件的个数。
+logging.handlers.TimedRotatingFileHandler( filename [,when [,interval [,backupCount]]])  -> 按照时间自动分割日志文件
+
+
+
+配置方法：
+
+- `setLevel()`方法和日志对象的一样，指明了将会分发日志的最低级别。为什么会有两个`setLevel()`方法？记录器的级别决定了消息是否要传递给处理器。每个处理器的级别决定了消息是否要分发。
+- `setFormatter()`为该处理器选择一个格式化器。
+- `addFilter()`和`removeFilter()`分别配置和取消配置处理程序上的过滤器对象。
+
+**使用流程图**：
+先获取记录器：
+self.logger=logging.getLogger()
+设置日志等级
+self.logger.setLevel(level)
+设置日志输出格式
+fmt='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s'
+format_str = logging.Formatter(fmt)
+获取处理器
+sh=logging.StreamHandler()
+设置处理器的日志输出格式
+sh.setFormatter(format_str)
+添加到处理器中
+self.logger.addHandler(sh)
 
 ## python中常用的函数：
 
