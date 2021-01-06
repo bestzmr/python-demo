@@ -5,6 +5,7 @@
 # @Author : ZhaoQiang
 # @File : pic2anime.py 
 # @Software: PyCharm
+# @Description: 图像动漫化
 
 
 import requests, base64
