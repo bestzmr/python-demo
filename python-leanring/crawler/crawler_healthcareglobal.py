@@ -37,4 +37,15 @@ def parse_detail_html():
 
 
 if __name__ == '__main__':
-    parse_detail_html()
+    # parse_detail_html()
+
+    response = requests.get('https://www.healthcareglobal.com/technology-and-ai-3/oscar-pistorius-and-andoumlssur-prosthetic-technology-olympic-proportions')
+    selector = etree.HTML(response.text)
+    title = selector.xpath('//h1[@class="head__2Fi3"]/text()')[0]
+    with open('test.json','w',encoding='UTF-8') as fp:
+        fp.write('<div title="hcg_title">'+str(title)+'</div>')
+    fp.close()
+    with open('test.json','r',encoding='UTF-8') as fr:
+        line = fr.read()
+        print(line)
+    print(title)
