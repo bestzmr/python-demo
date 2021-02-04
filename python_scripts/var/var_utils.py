@@ -5,7 +5,7 @@
 # @Author : ZhaoQiang
 # @File : var_utils.py 
 # @Software: PyCharm
-# @Description: 获取变量大小
+# @Description: 获取变量大小 由于getsizeof只会算第一个值的大小，并不会迭代的去计算之后的值
 
 import sys
 import inspect
